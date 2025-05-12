@@ -32,10 +32,11 @@ void logOrReg(string &user){
     
     while(true){
 
-        cout << "== Sistem Pajak v2 ==\n";
+        cout << "== Selamat Datang di BaPakE ==\n";
         cout << "[1]. Register\n";
         cout << "[2]. Login\n";
-        cout << "[3]. EXIT\n";
+        cout << "[3]. Cek Data Kendaraan\n";
+        cout << "[4]. EXIT\n";
         cout << "Input: ";
         cin >> pil;
 

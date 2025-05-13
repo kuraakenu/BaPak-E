@@ -3,6 +3,8 @@ Dummy Project #1
 
 by Kuraakenu
 
+📄 [View Full License](LICENSE)  
+📑 [Changelog](changelog.md)
 
 Features: 
 - Sistem perpajakan online dengan sistem login dan register

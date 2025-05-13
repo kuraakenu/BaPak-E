@@ -1,22 +1,27 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <cctype>
 
 using namespace std;
 
 const string fileUserPasw = "logOrReg.txt";
 const string fileDataUser = "dataUser.txt";
+const string fileProfileUser = "profileUser.txt";
 
 bool loginUser(string usn, string pasw);
 bool registerUser(string usn, string pasw);
-void firstMenu(string &user);
-
+void firstMenu(string &usn);
+void profileUser(string &usn, int jKend);
 void mainMenu();
-void tambahKendaraan(string user);
+void tambahKendaraan(string &usn, int *jKend);
+string EditUpLowCase(string a);
 
-struct user{
-    string namaUser;
+struct users{
     int NIK;
+    string namaUser;
+    char jenisKelamin;
+    int jumlahKendaraan;
 };
 
 struct informasiPajak{
@@ -27,7 +32,7 @@ struct informasiPajak{
 };
 
 struct kendaraan{
-    user pemilik;
+    users pemilik;
     string noPol;
     string jenisKendaraan;
     string merk;
@@ -46,7 +51,8 @@ int main(){
 void mainMenu(){
     
     string user;
-    int pil;
+    int pil, jKend;
+    jKend = 0;
     firstMenu(user);
 
     while(pil != 5){
@@ -56,87 +62,168 @@ void mainMenu(){
         cout << "[2]. Membayar Pajak\n";
         cout << "[3]. List Kendaraan\n";
         cout << "[4]. Informasi\n";
-        cout << "[5]. EXIT\n";
+        cout << "[6]. Profile\n";
+        cout << "[7]. EXIT\n";
         cout << "Input: ";
         // cout << "[4]. Tambah Teman\n"; == Coming Soon ==
-        // cout << "[5]. Profile\n"; == Coming Soon ==
         cin >> pil;
 
         switch(pil){
             case 1:
-                tambahKendaraan(user);
+                tambahKendaraan(user, &jKend);
+            break;
+            case 6:
+                profileUser(user, jKend);
             break;
         }
     }
 }
 
-void tambahKendaraan(string user){
+
+void profileUser(string &usn, int jKend){
     system("cls");
-    ofstream file(fileDataUser, ios::app);
-    kendaraan k;
+    ifstream fileCheck(fileProfileUser);
+    users u;
+    string lines;
 
-    cout << "Masukkan Nomor Polisi: ";
-    cin.ignore();
-    getline(cin, k.noPol);
-    cout << "Masukkan Jenis Kendaraan(Motor/Mobil): ";
-    cin >> k.jenisKendaraan;
-    cout << "Masukkan Merk: ";
-    cin >> k.merk;
-    cout << "Masukkan Model: ";
-    cin.ignore();
-    getline(cin, k.model);
-    cout << "Masukkan Warna: ";
-    cin.ignore();
-    getline(cin, k.warna);
-    cout << "Masukkan Tahun Produksi: ";
-    cin >> k.tahunProduksi;
+    if(!fileCheck.is_open()){
+        cout << "File Error!";
+        system("pause");
+        return;
+    }
 
-    file << user << ',' << k.noPol << ',' << k.jenisKendaraan << ',' << k.merk << ',' << k.model << ',' << k.warna << ',' << k.tahunProduksi << '\n';
-    file.close();
-    cout << "Data Kendaraan Berhasil Ditambahkan!\n";
-    system("pause");
-    return;
+    bool sudahAda = false;
+
+    while(getline(fileCheck, lines)){
+        if(lines.rfind(usn + ',', 0) == 0){
+            sudahAda = true;
+            break;
+        }
+    }
+    
+    if(!sudahAda){
+        fileCheck.close();
+        ofstream file(fileProfileUser, ios::app);
+
+        cout << "Hai, " << usn << "!\n";
+        cout << "Silakan Lengkapi Profile Anda!\n";
+        cout << "NIK: ";
+        cin >> u.NIK;
+        cout << "Nama Lengkap: ";
+        cin.ignore();
+        getline(cin, u.namaUser);
+
+        u.namaUser = EditUpLowCase(u.namaUser);
+
+        cout << "Jenis Kelamin(L/P): ";
+        cin >> u.jenisKelamin;
+        u.jenisKelamin = toupper(u.jenisKelamin);
+
+        file << usn << ',' << u.NIK << ',' << u.namaUser << ',' << u.jenisKelamin << ',' << jKend << '\n';
+        file.close();
+
+        cout << "Profile Berhasil Dilengkapi!\n";
+        system("pause");
+        return;
+    }else{
+        ifstream file(fileProfileUser);
+        cout << "Hai, " << usn << "!\n";
+        cout << "Profile Anda Sebagai Berikut: \n";
+        string line;
+
+        while(getline(file,line)){
+            if(line.rfind(usn + ',', 0) == 0){
+                stringstream ss(line);
+                string namaLengkap, nikStr, gender, jKendStr, tempUsn;
+                
+                getline(ss, usn, ',');
+                getline(ss, nikStr, ',');
+                getline(ss, namaLengkap, ',');
+                getline(ss, gender, ',');
+                getline(ss, jKendStr, ',');
+                
+                cout << "NIK               : " << nikStr << '\n';
+                cout << "Nama Lengkap      : " << namaLengkap << '\n';
+                cout << "Jenis kelamin     : " << gender << '\n';
+                cout << "Jumlah Kendaraan  : " << jKendStr << '\n';
+                break;
+            }
+        }
+
+        system("pause");
+        return;
+    }
 }
 
 
+void tambahKendaraan(string &usn, int *jKend){
+    system("cls");
 
+    ifstream fileCheck(fileProfileUser);
+    string lines;
+    if(!fileCheck.is_open()){
+        cout << "File Error!";
+        system("pause");
+        return;
+    }
 
+    bool sudahAda = false;
 
+    while(getline(fileCheck, lines)){
+        if(lines.rfind(usn + ',', 0) == 0){
+            sudahAda = true;
+            break;
+        }
+    }    
 
+    if(sudahAda){
+        ofstream file(fileDataUser, ios::app);
+        kendaraan k;
+        
+        if(!file.is_open()){
+            cout << "File Error!";
+            system("pause");
+            return;
+        }
+    
+        cout << "Masukkan Nomor Polisi: ";
+        cin.ignore();
+        getline(cin, k.noPol);
+        cout << "Masukkan Jenis Kendaraan(Motor/Mobil): ";
+        cin >> k.jenisKendaraan;
+        k.jenisKendaraan = EditUpLowCase(k.jenisKendaraan);
+        cout << "Masukkan Merk: ";
+        cin >> k.merk;
+        k.merk = EditUpLowCase(k.merk);
+        cout << "Masukkan Model: ";
+        cin.ignore();
+        getline(cin, k.model);
+        cout << "Masukkan Warna: ";
+        getline(cin, k.warna);
+        k.warna = EditUpLowCase(k.warna);
+        cout << "Masukkan Tahun Produksi: ";
+        cin >> k.tahunProduksi;
+    
+        file << usn << ',' << k.noPol << ',' << k.jenisKendaraan << ',' << k.merk << ',' << k.model << ',' << k.warna << ',' << k.tahunProduksi << '\n';
+        file.close();
+        *jKend = *jKend + 1;
+        cout << "Data Kendaraan Berhasil Ditambahkan!\n";
+        system("pause");
+        return;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }else{
+            cout << "Silakan ke Menu [6] Untuk Membuat Profil Terlebih Dahulu!\n";
+            system("pause");
+            return;
+    }
+}
 
 // LOGIN OR REGISTER //
 
-void firstMenu(string &user){
+void firstMenu(string &usn){
     system("cls");
 
-    string usn, pasw;
+    string pasw;
     int pil;
     
     while(true){
@@ -169,7 +256,6 @@ void firstMenu(string &user){
                 cout << "Password: ";
                 cin >> pasw;
                 if(loginUser(usn, pasw)){
-                    user = usn;
                     cout << "Login Sukses!\n";
                     system("pause");
                     return;
@@ -198,6 +284,11 @@ void firstMenu(string &user){
 bool loginUser(string usn, string pasw){
     ifstream file(fileUserPasw);
     string line, us, ps;
+    if(!file.is_open()){
+        cout << "File Error!";
+        system("pause");
+        return false;
+    }
     
     while(getline(file, line)){
         stringstream ss(line);
@@ -234,7 +325,23 @@ bool registerUser(string usn, string pasw){
         file.close();
         return true;
     }else{
-        cout << "Gagal Mengakses File!\n";
+        cout << "File Error!\n";
         return false;
     }
+}
+
+string EditUpLowCase(string a){
+        bool newWord = true;
+        for(char &lw : a){
+            lw = tolower(lw);
+        }
+        for (char &up : a){
+            if(isspace(up)){
+                newWord = true;
+            }else if (newWord) {
+                up = toupper(up);
+                newWord = false;
+            }
+        }
+    return a;
 }

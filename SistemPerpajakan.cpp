@@ -9,28 +9,138 @@ const string fileDataUser = "dataUser.txt";
 
 bool loginUser(string usn, string pasw);
 bool registerUser(string usn, string pasw);
-void logOrReg(string &user);
+void firstMenu(string &user);
+
+void mainMenu();
+void tambahKendaraan(string user);
+
+struct user{
+    string namaUser;
+    int NIK;
+};
+
+struct informasiPajak{
+    string latestPembayaran;
+    int masaBerlaku;
+    int jumlahPajak;
+    string statusPajak;
+};
+
+struct kendaraan{
+    user pemilik;
+    string noPol;
+    string jenisKendaraan;
+    string merk;
+    string model;
+    string warna;
+    int tahunProduksi;
+    informasiPajak info;
+};
 
 int main(){
-    string user;
-
-    logOrReg(user);
     system("cls");
-
-    cout << "Selamat Datang, " << user << "!\n";
-    
+    mainMenu();
     return 0;
 }
 
+void mainMenu(){
+    
+    string user;
+    int pil;
+    firstMenu(user);
+
+    while(pil != 5){
+        system("cls");
+        cout << "Selamat Datang, " << user << "!\n";
+        cout << "[1]. Menambah Kendaraan\n";
+        cout << "[2]. Membayar Pajak\n";
+        cout << "[3]. List Kendaraan\n";
+        cout << "[4]. Informasi\n";
+        cout << "[5]. EXIT\n";
+        cout << "Input: ";
+        // cout << "[4]. Tambah Teman\n"; == Coming Soon ==
+        // cout << "[5]. Profile\n"; == Coming Soon ==
+        cin >> pil;
+
+        switch(pil){
+            case 1:
+                tambahKendaraan(user);
+            break;
+        }
+    }
+}
+
+void tambahKendaraan(string user){
+    system("cls");
+    ofstream file(fileDataUser, ios::app);
+    kendaraan k;
+
+    cout << "Masukkan Nomor Polisi: ";
+    cin.ignore();
+    getline(cin, k.noPol);
+    cout << "Masukkan Jenis Kendaraan(Motor/Mobil): ";
+    cin >> k.jenisKendaraan;
+    cout << "Masukkan Merk: ";
+    cin >> k.merk;
+    cout << "Masukkan Model: ";
+    cin.ignore();
+    getline(cin, k.model);
+    cout << "Masukkan Warna: ";
+    cin.ignore();
+    getline(cin, k.warna);
+    cout << "Masukkan Tahun Produksi: ";
+    cin >> k.tahunProduksi;
+
+    file << user << ',' << k.noPol << ',' << k.jenisKendaraan << ',' << k.merk << ',' << k.model << ',' << k.warna << ',' << k.tahunProduksi << '\n';
+    file.close();
+    cout << "Data Kendaraan Berhasil Ditambahkan!\n";
+    system("pause");
+    return;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // LOGIN OR REGISTER //
 
-void logOrReg(string &user){
+void firstMenu(string &user){
     system("cls");
 
     string usn, pasw;
     int pil;
     
     while(true){
+        system("cls");
 
         cout << "== Selamat Datang di BaPakE ==\n";
         cout << "[1]. Register\n";
@@ -69,7 +179,18 @@ void logOrReg(string &user){
                     system("cls");
                 }
             break;
-                
+            
+            case 3:
+                system("cls");
+                cout << "==[COMING SOON!]==\n";
+                system("pause");
+            break;
+
+            case 4:
+                cout << "Sampai Jumpa!\n";
+                system("pause");
+                exit(0);
+            break;
         }
     }
 }

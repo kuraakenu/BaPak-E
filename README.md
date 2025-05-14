@@ -1,17 +1,54 @@
-# BaPakE (Bayar PAjaK onlinE)
-Dummy Project #1
+# 🐍 BaPaK-E (Bayar PAjaK onLinE)
 
-by Kuraakenu
+![Repo Size](https://img.shields.io/github/repo-size/your-username/bapak-e?style=flat-square)
+![License](https://img.shields.io/github/license/your-username/bapak-e?style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/your-username/bapak-e?style=flat-square)
+
+> 🎯 Dummy Project #1 — Sistem Perpajakan Kendaraan Online  
+> ✨ by **Kuraakenu**
+
+---
+
+## 📄 Description
+
+**BaPaK-E** Merupakan sistem simulasi perpajakan kendaraan online berbahasa pemrograman C++ yang mendukung fitur registrasi, login, dan manajemen data kendaraan pengguna. Proyek ini dibuat untuk pembelajaran dan eksplorasi bahasa pemrograman C++.
+
+---
+
+## 🚀 Features
+
+✅ Sistem login, register, dan logout  
+✅ Menambahkan data kendaraan (motor atau mobil)  
+✅ Profil lengkap setelah registrasi  
+✅ Tidak bisa menambahkan kendaraan tanpa profil  
+✅ Jumlah kendaraan bisa dilihat dari profil  
+✅ Menggunakan format `.csv` untuk menyimpan data  
+✅ Tidak perlu download ulang file data  
+
+---
+
+## 🔧 Upcoming Features
+
+🔜 Cek data kendaraan tanpa login/register (**Coming Soon**)  
+
+---
+
+## 📁 Project Structure
+📂 BaPak-E/
+├── main.cpp
+├── user_data.csv
+├── LICENSE
+├── changelog.md
+└── README.md
+
+---
+
+## 📘 Links
 
 📄 [View Full License](LICENSE)  
-📑 [Changelog](changelog.md)
+📝 [Changelog](changelog.md)
 
-Features: 
-- Sistem perpajakan online dengan sistem login dan register
-- Menambahkan data kendaraan baik motor ataupun mobil
-- Membuat profil setelah registrasi
-- Tidak bisa menambahkan kendaraan sebelum mengisi profil
+---
 
-
-Upcoming Features:
-- Bisa mengecek data kendaraan tanpa harus login atau register (Coming Soon)
+```markdown
+![snake gif](https://github.com/kuraakenu/kuraakenu/blob/output/github-contribution-grid-snake.svg)

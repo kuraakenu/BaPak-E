@@ -1,31 +1,52 @@
-# Changelog-BaPakE (Bayar PAjaK onlinE)!
+# 🟢 Welcome to Changelog BaPak-E!
 
-Welcome to Changelog BaPakE!
+---
 
---------------------------------------------------------------------------------
-> Changes for May 13, 2025 part 2
+## 📅 Changes for **May 14, 2025**
 
-Features:
-- Membuat profil setelah registrasi
-- Tidak bisa menambahkan kendaraan sebelum mengisi profil
+### ✨ Features
+- Menu exit telah berfungsi  
+- Kini bisa log out  
+- File data menggunakan format `.csv`  
+- Tidak perlu mendownload file data dari Repositori  
+- Informasi kendaraan sudah bisa dicek  
 
-Bugs:
-- Jumlah kendaraan pada profil akan tetap bernilai 0
-- Switch case masih ada yang belum terarahkan
---------------------------------------------------------------------------------
-> Changes for May 13, 2025
+### 🛠️ Fixed
+- Jumlah kendaraan di profil telah sesuai  
 
-Features:
-- Sistem perpajakan online dengan sistem login dan register
+### 🐞 Bugs
+- Switch case masih ada yang belum terarahkan  
 
-Bugs:
-- Switch case masih ada yang belum terarahkan
---------------------------------------------------------------------------------
-> Changes for May 12, 2025
+---
 
-Features:
-- Sistem perpajakan online dengan sistem login dan register
+## 📅 Changes for **May 13, 2025 — Part 2**
 
-Bugs:
-- Switch case masih ada yang belum terarahkan
---------------------------------------------------------------------------------
+### ✨ Features
+- Membuat profil setelah registrasi  
+- Tidak bisa menambahkan kendaraan sebelum mengisi profil  
+
+### 🐞 Bugs
+- Jumlah kendaraan pada profil tetap bernilai `0`  
+- Switch case masih ada yang belum terarahkan  
+
+---
+
+## 📅 Changes for **May 13, 2025**
+
+### ✨ Features
+- Sistem perpajakan online dengan sistem login dan register  
+
+### 🐞 Bugs
+- Switch case masih ada yang belum terarahkan  
+
+---
+
+## 📅 Changes for **May 12, 2025**
+
+### ✨ Features
+- Sistem perpajakan online dengan sistem login dan register  
+
+### 🐞 Bugs
+- Switch case masih ada yang belum terarahkan  
+
+---

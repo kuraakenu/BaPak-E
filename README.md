@@ -18,12 +18,12 @@
 ## 🚀 Features
 
 ✅ Sistem login, register, dan logout  
-✅ Menambahkan data kendaraan (motor atau mobil)  
-✅ Profil lengkap setelah registrasi  
-✅ Tidak bisa menambahkan kendaraan tanpa profil  
-✅ Jumlah kendaraan bisa dilihat dari profil  
+✅ Menambahkan data kendaraan
+✅ Melengkapi profil setelah registrasi  
+✅ Tidak bisa menambahkan kendaraan sebelum melengkapi profil  
+✅ Jumlah kendaraan bisa dilihat di profil  
 ✅ Menggunakan format `.csv` untuk menyimpan data  
-✅ Tidak perlu download ulang file data  
+✅ Tidak perlu mendownload file data
 
 ---
 

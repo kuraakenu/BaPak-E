@@ -33,22 +33,6 @@
 
 ---
 
-## 📁 Project Structure
-
-📂 BaPak-E/
-
-├── main.cpp
-
-├── user_data.csv
-
-├── LICENSE
-
-├── changelog.md
-
-└── README.md
-
----
-
 ## 📘 Links
 
 📄 [View Full License](LICENSE)  

@@ -1,8 +1,8 @@
 # 🐍 BaPaK-E (Bayar PAjaK onLinE)
 
-![Repo Size](https://img.shields.io/github/repo-size/your-username/bapak-e?style=flat-square)
-![License](https://img.shields.io/github/license/your-username/bapak-e?style=flat-square)
-![Last Commit](https://img.shields.io/github/last-commit/your-username/bapak-e?style=flat-square)
+![Repo Size](https://img.shields.io/github/repo-size/kuraakenu/bapak-e?style=flat-square)
+![License](https://img.shields.io/github/license/kuraakenu/bapak-e?style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/kuraakenu/bapak-e?style=flat-square)
 
 > 🎯 Dummy Project #1 — Sistem Perpajakan Kendaraan Online  
 > ✨ by **Kuraakenu**

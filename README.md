@@ -34,11 +34,17 @@
 ---
 
 ## 📁 Project Structure
+
 📂 BaPak-E/
+
 ├── main.cpp
+
 ├── user_data.csv
+
 ├── LICENSE
+
 ├── changelog.md
+
 └── README.md
 
 ---
@@ -49,6 +55,3 @@
 📝 [Changelog](changelog.md)
 
 ---
-
-```markdown
-![snake gif](https://github.com/kuraakenu/kuraakenu/blob/output/github-contribution-grid-snake.svg)

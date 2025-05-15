@@ -117,6 +117,8 @@ void profileUser(string &usn){
             break;
         }
     }
+
+    fileCheck.close();
     
     if(!sudahAda){
         fileCheck.close();
@@ -168,7 +170,7 @@ void profileUser(string &usn){
                 break;
             }
         }
-
+        file.close();
         system("pause");
         return;
     }
@@ -193,7 +195,7 @@ void listKendaraan(string &usn){
             break;
         }
     }
-
+    file.close();
     
     if(sudahAda){
         ifstream fileCount(fileDataUser);
@@ -205,6 +207,8 @@ void listKendaraan(string &usn){
                 count += 1;
             }
         }
+
+        fileCount.close();
 
         ifstream files(fileDataUser);
         string lines;
@@ -239,7 +243,7 @@ void listKendaraan(string &usn){
                 system("pause");
             }
         }
-
+        files.close();
     }else{
         system("cls");
         cout << "Silakan ke Menu [6] Untuk Melengkapi Profile Terlebih Dahulu!\n";
@@ -260,7 +264,7 @@ void tambahKendaraan(string &usn){
         ofstream createFile(fileProfileUser);
         createFile.close();
     }
-
+    fileCheck.close();
     bool sudahAda = false;
 
     while(getline(fileCheck, lines)){
@@ -452,8 +456,8 @@ void tambahTotalKendaraan(string &usn){
             count += 1;
         }
     }
-    
     Jkend = count;
+    fileCount.close();
     
     ifstream fileInput(fileProfileUser);
     vector <string> changedLine;

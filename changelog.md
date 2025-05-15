@@ -1,4 +1,29 @@
 # 🟢 Welcome to Changelog BaPak-E!
+---
+
+## 📅 Changes for **May 15, 2025**
+
+### ✨ Features
+
+- Nothing added.
+
+### 🛠️ Fixed
+- Optimized some memory! 
+
+### 🐞 Bugs
+- Switch case masih ada yang belum terarahkan  
+
+---
+
+## 📅 Changes for **May 13, 2025 — Part 2**
+
+### ✨ Features
+- Membuat profil setelah registrasi  
+- Tidak bisa menambahkan kendaraan sebelum mengisi profil  
+
+### 🐞 Bugs
+- Jumlah kendaraan pada profil tetap bernilai `0`  
+- Switch case masih ada yang belum terarahkan  
 
 ---
 

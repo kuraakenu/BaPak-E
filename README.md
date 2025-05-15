@@ -1,4 +1,4 @@
-# 🐍 BaPaK-E (Bayar PAjaK onLinE)
+# 🐍 BaPaK-E (Bayar PAjaK onlinE)
 
 ![Repo Size](https://img.shields.io/github/repo-size/kuraakenu/bapak-e?style=flat-square)
 ![License](https://img.shields.io/github/license/kuraakenu/bapak-e?style=flat-square)

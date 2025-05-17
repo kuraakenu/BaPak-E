@@ -9,6 +9,7 @@ using namespace std;
 const string fileUserPasw = "infoLogin.csv";
 const string fileDataUser = "dataUser.csv";
 const string fileProfileUser = "profileUser.csv";
+const string fileInfoTax = "infoTax.csv";
 
 bool loginUser(string usn, string pasw);
 bool registerUser(string usn, string pasw);
@@ -18,6 +19,8 @@ void mainMenu();
 void tambahKendaraan(string &usn);
 void tambahTotalKendaraan(string &usn);
 void listKendaraan(string &usn);
+void payTax(string &usn);
+void infoTax(string &usn);
 string EditUpLowCase(string a);
 
 struct users{
@@ -52,7 +55,6 @@ int main(){
 }
 
 void mainMenu(){
-    
     string user;
     int pil;
 
@@ -65,9 +67,9 @@ void mainMenu(){
         cout << "[2]. Membayar Pajak\n";
         cout << "[3]. Info Kendaraan\n";
         cout << "[4]. Info Pajak\n";
-        cout << "[6]. Profile\n";
-        cout << "[7]. LOG OUT\n";
-        cout << "[8]. EXIT\n";
+        cout << "[5]. Profile\n";
+        cout << "[6]. LOG OUT\n";
+        cout << "[7]. EXIT\n";
         cout << "Input: ";
         // cout << "[4]. Tambah Teman\n"; == Coming Soon ==
         cin >> pil;
@@ -76,18 +78,24 @@ void mainMenu(){
             case 1:
                 tambahKendaraan(user);
             break;
+            case 2:
+                payTax(user);
+            break;
             case 3:
                 listKendaraan(user);
             break;
-            case 6:
+            case 4:
+                infoTax(user);
+            break;
+            case 5:
                 profileUser(user);
             break;
-            case 7:
+            case 6:
                 cout << "Anda Akan diarahkan ke Menu Awal!\n";
                 system("pause");
                 firstMenu(user);
             break;
-            case 8:
+            case 7:
                 cout << "Terimakasih Telah Mengunjungi BaPakE!\n";
                 system("pause");
                 exit(0);
@@ -96,6 +104,70 @@ void mainMenu(){
     }
 }
 
+void payTax(string &usn){
+    ifstream fileCheck(fileInfoTax);
+    string tempUsn;
+    bool sudahAda = false;
+    
+    if(!fileCheck.is_open()){
+        cout << "File Tidak Ada, File Baru Akan Dibuat!\n";
+        system("pause");
+        ofstream createFile(fileInfoTax);
+        createFile.close();
+        system("cls");
+    }
+
+    while(fileCheck >> tempUsn){
+        if(tempUsn == usn){
+            sudahAda = true;
+            system("pause");
+        }
+    }
+
+    if(!sudahAda){
+            cout << "Anda Belum Menambahkan Info Pajak!\n";
+            cout << "Silakan Mengisi Info Pajak Terlebih Dahulu Pada Menu [4]!\n";
+            system("pause");
+            fileCheck.close();
+            return;
+    }
+}
+
+
+void infoTax(string &usn){
+    ifstream fileCheck(fileInfoTax);
+    string tempUsn;
+    bool sudahAda = false;
+
+    if(!fileCheck.is_open()){
+        cout << "File Tidak Ada, File Baru Akan Dibuat!\n";
+        system("pause");
+        ofstream createFile(fileInfoTax);
+        createFile.close();
+        system("cls");
+    }
+
+    while(fileCheck >> tempUsn){
+        if(tempUsn == usn){
+            sudahAda = true;
+            break;
+            fileCheck.close();
+        }
+    }
+
+    if(sudahAda){
+        cout << "Coming Soon!\n";
+        system("pause");
+        return;
+    }else{
+        cout << "Anda Belum Menambahkan Kendaraan!\n";
+        cout << "Silakan Menambahkan Kendaraan Terlebih Dahulu Pada Menu [1]!\n";
+        system("pause");
+        return;
+    }
+
+
+}
 
 void profileUser(string &usn){
     system("cls");
@@ -309,7 +381,7 @@ void tambahKendaraan(string &usn){
 
     }else{
             system("cls");
-            cout << "Silakan ke Menu [6] Untuk Melengkapi Profile Terlebih Dahulu!\n";
+            cout << "Silakan ke Menu [5] Untuk Melengkapi Profile Terlebih Dahulu!\n";
             system("pause");
             return;
     }
